@@ -1,0 +1,41 @@
+Implement Login System using Django. 
+
+home app 
+forms.py 
+from django import forms 
+class LoginForm(forms.Form):
+ username=forms.CharField(max_length=63) 
+ password=forms.CharField(max_length=63,widget=forms.PasswordInput) 
+
+login.html 
+<form method="post">
+ {{ form.as_p }}
+ {% csrf_token %}
+ <button type="submit">Submit</button>
+</form>
+
+views.py 
+from django.shortcuts import render 
+from . import forms
+def login(request):
+ form=forms.LoginForm()
+ if request.method=='POST': 
+ form=forms.LoginForm(request.POST) 
+ if form.is_valid(): 
+ return HttpResponse("Login Ok") 
+ return render(request,'login.html',context={'form':form}) 
+
+urls.py
+from django.urls import path
+from .views import login 
+urlpatterns = [
+ path('logins/',login, name="home"),
+] 
+test_project
+from django.contrib import admin
+from django.urls import path
+from django.urls import include
+urlpatterns = [
+ path('home/', include("home.urls")),
+] 
+D
