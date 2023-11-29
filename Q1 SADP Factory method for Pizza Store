@@ -1,0 +1,109 @@
+Write a Java Program to implement Factory method for Pizza Store with createPizza(), orederPizza(), prepare(), Bake(), cut(), box(). Use this to create variety of pizza’s 
+like NyStyleCheesePizza, ChicagoStyleCheesePizza etc.
+
+import java.util.*;
+ interface PizzaStore
+ {
+   public void  createPizza();
+   public void  orederPizza();
+   public void prepare();
+   public void Bake();
+   public void cut();
+   public void  box();
+ }
+ class NyStyleCheesePizza implements PizzaStore
+ {
+    public void  createPizza()
+    {
+        System.out.println("Creating Pizza in NYStyle");
+    }
+    public void  orederPizza()
+    {
+        System.out.println("Creating Pizza in NYStyle");
+    }
+    public void prepare()
+    {
+        System.out.println("Prepare Pizza in NYStyle");
+    }
+    public void Bake()
+    {
+        System.out.println("Bake Pizza for 10 Minutes");
+    }
+    public void cut()
+    {
+        System.out.println("Cut Pizza in NYStyle Diamond");
+    }
+    public void  box()
+    {
+        System.out.println("Pack Pizza in NY Box");
+    }
+ }
+
+ class  ChicagoStyleCheesePizza implements PizzaStore
+ {
+    public void  createPizza()
+    {
+        System.out.println("Creating Pizza in ChicagoStyle");
+    }
+    public void  orederPizza()
+    {
+        System.out.println("Ordering Pizza in ChicagoStyle");
+    }
+    public void prepare()
+    {
+        System.out.println("Prepare Pizza in ChicagoStyle");
+    }
+    public void Bake()
+    {
+        System.out.println("Bake Pizza for 15 Minutes");
+    }
+    public void cut()
+    {
+        System.out.println("Cut Pizza in ChicagoStyle Triangle");
+    }
+    public void  box()
+    {
+        System.out.println("Pack Pizza in Chicago Box");
+    }
+ }
+
+ class PizzaFactory
+ {
+ 
+     public PizzaStore getPizza(String pizzatype)
+     {
+             if(pizzatype.equals("NY"))
+             {
+                 return new NyStyleCheesePizza();
+             }
+             if(pizzatype.equals("Chicago"))
+             {
+                 return new ChicagoStyleCheesePizza();
+             }       
+            return null; 
+     }
+ }
+ 
+ class Slip4
+ {
+     public static void main(String args[])
+     {
+         Scanner sc=new Scanner(System.in);
+         System.out.println("Enter Type of Pizza you want (NY / Chicago)");
+         String sn=sc.next();
+         PizzaFactory factory=new PizzaFactory();
+         PizzaStore ob=factory.getPizza(sn);
+         ob.createPizza();ob.prepare();ob.Bake();ob.cut();ob.box();
+
+     }
+ }
+------------------------------------------------------------------
+ Output
+* Enter Type of Pizza you want (NY / Chicago)
+
+NY
+Creating Pizza in NYStyle
+Prepare Pizza in NYStyle 
+Bake Pizza for 10 Minutes
+Cut Pizza in NYStyle Diamond
+Pack Pizza in NY Box
