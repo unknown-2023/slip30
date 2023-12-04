@@ -1,7 +1,5 @@
-Implement Login System using Django. 
+ Implement Login System using Django
 
-home app 
-forms.py 
 from django import forms 
 class LoginForm(forms.Form):
  username=forms.CharField(max_length=63) 
@@ -31,11 +29,11 @@ from .views import login
 urlpatterns = [
  path('logins/',login, name="home"),
 ] 
+
 test_project
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
 urlpatterns = [
  path('home/', include("home.urls")),
-] 
-D
+]
